@@ -1,0 +1,85 @@
+name: Publicar en Instagram
+
+on:
+  schedule:
+    # Todos los días a las 21:00 UTC (18:00 en Argentina). El script solo publica si pasaron ~2 días.
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Publicar ahora aunque no hayan pasado 2 días'
+        type: boolean
+        default: false
+      dry_run:
+        description: 'Solo generar las imágenes, sin publicar'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+          sudo apt-get install -y fonts-noto-color-emoji
+
+      - name: Generar capturas
+        id: gen
+        run: node scripts/generate.mjs
+        env:
+          FORCE: ${{ inputs.force || 'false' }}
+
+      - name: Subir imágenes al repositorio
+        if: steps.gen.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output
+          git diff --cached --quiet || git commit -m "Capturas: ${{ steps.gen.outputs.slug }}"
+          git push
+
+      - name: Publicar en Instagram
+        if: steps.gen.outputs.skip != 'true' && inputs.dry_run != true
+        run: node scripts/publish.mjs
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          SLUG: ${{ steps.gen.outputs.slug }}
+
+      - name: Guardar estado
+        if: steps.gen.outputs.skip != 'true' && inputs.dry_run != true
+        run: |
+          git add state.json
+          git diff --cached --quiet || git commit -m "Publicado: ${{ steps.gen.outputs.slug }}"
+          git push
+
+      # Opcional: si cargaste el secreto GH_PAT, el token de Instagram se renueva solo y nunca vence
+      - name: Renovar token de Instagram
+        if: steps.gen.outputs.skip != 'true' && inputs.dry_run != true
+        continue-on-error: true
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "Sin GH_PAT: el token no se renueva automáticamente (vence a los 60 días)."
+            exit 0
+          fi
+          NEW_TOKEN=$(node scripts/refresh-token.mjs)
+          echo "::add-mask::$NEW_TOKEN"
+          gh secret set IG_ACCESS_TOKEN --body "$NEW_TOKEN" --repo "$GITHUB_REPOSITORY"
+          echo "Token renovado por 60 días más."
