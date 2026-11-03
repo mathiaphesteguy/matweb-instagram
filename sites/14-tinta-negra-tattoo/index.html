@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tinta Negra — Tattoo studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0a0a0a; --paper: #ece8e1; --red: #d7261e; --muted: #8a857d; --line: #2b2b2b; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Space Mono", monospace; background: var(--bg); color: var(--paper); overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  .bl { font-family: "UnifrakturCook", serif; font-weight: 700; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 40px; border-bottom: 1px solid var(--line); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+  .logo { font-size: 30px; text-transform: none; letter-spacing: 0; }
+  .links { display: flex; gap: 30px; color: var(--muted); }
+  .open { display: flex; gap: 10px; align-items: center; }
+  .open i { width: 9px; height: 9px; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px var(--red); }
+  .burger { display: none; width: 24px; height: 12px; border-top: 2px solid; border-bottom: 2px solid; }
+
+  .hero { position: relative; height: 820px; overflow: hidden; }
+  .photo { position: absolute; left: 50%; top: 80px; width: 560px; height: 640px; margin-left: -280px; background: #333 url("https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=1200&q=80&auto=format&fit=crop") center/cover; filter: grayscale(1) contrast(1.15) brightness(.85); }
+  .title { position: absolute; left: 0; right: 0; top: 250px; text-align: center; font-size: 220px; line-height: 1; mix-blend-mode: difference; color: var(--paper); white-space: nowrap; }
+  .corner { position: absolute; font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); line-height: 1.7; }
+  .corner b { color: var(--paper); font-weight: 400; }
+  .c1 { left: 40px; top: 60px; } .c2 { right: 40px; top: 60px; text-align: right; } .c3 { left: 40px; bottom: 60px; } .c4 { right: 40px; bottom: 60px; text-align: right; }
+  .plus { position: absolute; width: 22px; height: 22px; }
+  .plus::before, .plus::after { content: ""; position: absolute; background: var(--red); }
+  .plus::before { left: 10px; top: 0; width: 2px; height: 22px; } .plus::after { top: 10px; left: 0; height: 2px; width: 22px; }
+  .p1 { left: calc(50% - 300px); top: 60px; } .p2 { right: calc(50% - 300px); top: 60px; } .p3 { left: calc(50% - 300px); top: 708px; } .p4 { right: calc(50% - 300px); top: 708px; }
+  .cta { display: inline-block; background: var(--red); color: var(--paper); padding: 16px 26px; font-weight: 700; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin-top: 12px; }
+
+  .ticker { background: var(--red); white-space: nowrap; overflow: hidden; font-weight: 700; font-size: 18px; letter-spacing: .14em; text-transform: uppercase; padding: 14px 0; }
+  .ticker span { margin: 0 22px; }
+  .artists { padding: 90px 40px; max-width: 1440px; margin: 0 auto; }
+  .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 40px; }
+  h2 { font-size: 84px; line-height: 1; }
+  .head p { color: var(--muted); max-width: 380px; font-size: 14px; line-height: 1.7; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card { border: 1px solid var(--line); padding: 14px; }
+  .card .img { height: 380px; background: #333 center/cover; filter: grayscale(1) contrast(1.1); }
+  .card h3 { font-size: 38px; margin: 18px 0 8px; font-weight: 700; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tags span { border: 1px solid var(--line); padding: 5px 10px; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .card .ag { display: flex; justify-content: space-between; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .card .ag b { color: var(--red); }
+  footer { border-top: 1px solid var(--line); padding: 26px 40px; display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+  @media (max-width: 760px) {
+    nav { padding: 18px 20px; }
+    .links, .open { display: none; }
+    .burger { display: block; }
+    .hero { height: 700px; }
+    .photo { width: 290px; height: 400px; margin-left: -145px; top: 150px; }
+    .title { top: 300px; font-size: 64px; }
+    .c1 { left: 20px; top: 30px; } .c2 { right: 20px; top: 30px; }
+    .c3 { left: 20px; right: 20px; bottom: 30px; text-align: center; }
+    .c4 { display: none; }
+    .p1 { left: calc(50% - 160px); top: 136px; } .p2 { right: calc(50% - 160px); top: 136px; }
+    .p3 { left: calc(50% - 160px); top: 542px; } .p4 { right: calc(50% - 160px); top: 542px; }
+    .ticker { font-size: 14px; }
+    .artists { padding: 60px 20px; }
+    .head { flex-direction: column; align-items: start; gap: 12px; margin-bottom: 26px; }
+    h2 { font-size: 58px; }
+    .grid { grid-template-columns: 1fr; }
+    .card .img { height: 300px; }
+    footer { padding: 22px 20px; flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <a class="logo bl" href="#">Tinta Negra</a>
+    <div class="links"><a href="#">Artistas</a><a href="#">Portfolio</a><a href="#">Cuidados</a><a href="#">FAQ</a></div>
+    <span class="open"><i></i>Agenda abierta</span>
+    <span class="burger"></span>
+  </nav>
+  <header class="hero">
+    <div class="photo"></div>
+    <span class="plus p1"></span><span class="plus p2"></span><span class="plus p3"></span><span class="plus p4"></span>
+    <div class="title bl">Tinta Negra</div>
+    <div class="corner c1">Est. <b>2014</b><br>San Telmo — Bs. As.</div>
+    <div class="corner c2">Blackwork<br>Fine line<br>Tradicional</div>
+    <div class="corner c3">Tatuajes de autor con turno previo.<br><a class="cta" href="#">Reservá tu sesión →</a></div>
+    <div class="corner c4">Nº <b>014</b><br>Defensa 1180</div>
+  </header>
+  <div class="ticker"><span>Flash day</span>✕<span>Sábado 14</span>✕<span>Sin turno</span>✕<span>Desde $ 40.000</span>✕<span>Flash day</span>✕<span>Sábado 14</span>✕<span>Sin turno</span></div>
+
+  <section class="artists">
+    <div class="head"><h2 class="bl">Artistas</h2><p>Tres estilos, un mismo estándar: material descartable, diseño exclusivo y seguimiento de la cicatrización.</p></div>
+    <div class="grid">
+      <article class="card"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1769605767701-6e5a680ef685?w=900&q=80&auto=format&fit=crop')"></div><h3 class="bl">Mara</h3><div class="tags"><span>Blackwork</span><span>Ornamental</span></div><div class="ag"><span>Agenda</span><b>Dic · 4 lugares</b></div></article>
+      <article class="card"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1552627019-947c3789ffb5?w=900&q=80&auto=format&fit=crop')"></div><h3 class="bl">Bruno</h3><div class="tags"><span>Tradicional</span><span>Neotradicional</span></div><div class="ag"><span>Agenda</span><b>Ene · abierta</b></div></article>
+      <article class="card"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1775135981378-4e7c1767436d?w=900&q=80&auto=format&fit=crop')"></div><h3 class="bl">Juli</h3><div class="tags"><span>Fine line</span><span>Lettering</span></div><div class="ag"><span>Agenda</span><b>Dic · completa</b></div></article>
+    </div>
+  </section>
+  <footer><span>© Tinta Negra Tattoo</span><span>@tintanegra.tattoo</span></footer>
+</body>
+</html>

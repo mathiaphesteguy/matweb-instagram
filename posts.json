@@ -1,0 +1,105 @@
+{
+  "handle": "MatWeb",
+  "cta": "¿Querés una web así para tu negocio? Escribime por DM 📩",
+  "hashtagsBase": ["#diseñoweb", "#paginaweb", "#webdesign", "#desarrolloweb", "#emprendedores"],
+  "sites": [
+    {
+      "slug": "11-monolito-arquitectura",
+      "name": "Monolito",
+      "tag": "Estudio de arquitectura",
+      "font": "Syne", "fw": "800",
+      "bg": "#e9e7e2", "ink": "#151515", "accent": "#8a857b",
+      "caption": "🏛️ Monolito — Web para un estudio de arquitectura.\n\nFoto a pantalla completa, el nombre del estudio ocupando todo el ancho y un portfolio de obras con aire editorial. Menos es más.",
+      "hashtags": ["#arquitectura", "#arquitectos", "#portfolio"]
+    },
+    {
+      "slug": "03-pulso-gym",
+      "name": "Pulso Gym",
+      "tag": "Gimnasio funcional",
+      "font": "Anton", "fw": "400",
+      "bg": "#0b0b0b", "ink": "#f2f2f2", "accent": "#c6ff3d",
+      "caption": "💪 Pulso — Web para un gimnasio funcional.\n\nEstética oscura con verde neón, tipografía XXL, clases del día en vivo y planes con precios claros para convertir visitas en socios.",
+      "hashtags": ["#gimnasio", "#fitness", "#crossfit"]
+    },
+    {
+      "slug": "12-alma-rios-fotografia",
+      "name": "Alma Ríos",
+      "tag": "Fotógrafa de bodas",
+      "font": "Instrument Serif", "fw": "400",
+      "bg": "#f5f0e8", "ink": "#2a2420", "accent": "#a46a4f",
+      "caption": "📸 Alma Ríos — Web para una fotógrafa de bodas.\n\nSerif elegante con firma manuscrita, collage de fotos en la portada y una galería tipo revista para que las historias hablen solas.",
+      "hashtags": ["#fotografiadebodas", "#fotografa", "#bodas"]
+    },
+    {
+      "slug": "13-fuego-lento-parrilla",
+      "name": "Fuego Lento",
+      "tag": "Parrilla de barrio",
+      "font": "Big Shoulders Display", "fw": "900",
+      "bg": "#120d0a", "ink": "#f3e6d3", "accent": "#ff5a1f",
+      "caption": "🔥 Fuego Lento — Web para una parrilla.\n\nTipografía condensada enorme, fuego en primer plano y una carta con gramajes y precios clara como un pizarrón.",
+      "hashtags": ["#parrilla", "#asado", "#restaurante"]
+    },
+    {
+      "slug": "10-lirio-floreria",
+      "name": "Lirio",
+      "tag": "Florería de autor",
+      "font": "Playfair Display", "fw": "600",
+      "bg": "#f9e8e6", "ink": "#2f4a3a", "accent": "#e8a6a1",
+      "caption": "🌸 Lirio — Web para una florería de autor.\n\nEstética editorial en tonos pastel, arcos con ilustraciones y una tienda online lista para vender ramos con envío en el día.",
+      "hashtags": ["#floreria", "#flores", "#tiendaonline"]
+    },
+    {
+      "slug": "14-tinta-negra-tattoo",
+      "name": "Tinta Negra",
+      "tag": "Estudio de tatuajes",
+      "font": "UnifrakturCook", "fw": "700",
+      "bg": "#0a0a0a", "ink": "#ece8e1", "accent": "#d7261e",
+      "caption": "🖤 Tinta Negra — Web para un estudio de tatuajes.\n\nLetra gótica, fotos en blanco y negro y detalles en rojo. Cada artista con su estilo y su agenda a la vista.",
+      "hashtags": ["#tattoo", "#tatuajes", "#tattoostudio"]
+    },
+    {
+      "slug": "15-bruma-cabanas",
+      "name": "Bruma Lodge",
+      "tag": "Cabañas en la Patagonia",
+      "font": "Gloock", "fw": "400",
+      "bg": "#e4e7e1", "ink": "#1c211e", "accent": "#4b5d4f",
+      "caption": "🌲 Bruma Lodge — Web para cabañas en la Patagonia.\n\nUna foto que te transporta, buscador de disponibilidad con efecto vidrio y cabañas con precio por noche para reservar directo, sin comisiones.",
+      "hashtags": ["#cabañas", "#turismo", "#patagonia"]
+    },
+    {
+      "slug": "07-estudio-norte",
+      "name": "Estudio Norte",
+      "tag": "Agencia creativa",
+      "font": "Space Grotesk", "fw": "700",
+      "bg": "#f2f0e9", "ink": "#0a0a0a", "accent": "#ffd400",
+      "caption": "✺ Estudio Norte — Web para una agencia creativa.\n\nEstilo brutalista con bordes marcados, tipografía gigante y un portfolio en lista que deja que los proyectos hablen solos.",
+      "hashtags": ["#agenciacreativa", "#brutalism", "#portfolio"]
+    },
+    {
+      "slug": "16-nodo-streetwear",
+      "name": "NODO",
+      "tag": "Marca de streetwear",
+      "font": "Archivo", "fw": "900",
+      "bg": "#f4f4f2", "ink": "#0d0d0d", "accent": "#ff2d1a",
+      "caption": "🧢 NODO — Tienda online para una marca de streetwear.\n\nLogo gigante, foto de campaña al frente, cuenta regresiva para el próximo drop y productos con stock en tiempo real.",
+      "hashtags": ["#streetwear", "#moda", "#ecommerce"]
+    },
+    {
+      "slug": "06-kaze-sushi",
+      "name": "Kaze",
+      "tag": "Sushi bar",
+      "font": "Shippori Mincho", "fw": "800",
+      "bg": "#0d0d0d", "ink": "#f3ede3", "accent": "#e63946",
+      "caption": "🍣 Kaze — Web para un sushi bar de autor.\n\nMinimalismo japonés: negro, rojo y papel, una carta elegante con precios y reservas en un clic.",
+      "hashtags": ["#sushi", "#restaurante", "#gastronomia"]
+    }
+  ],
+  "reserve": [
+    { "slug": "01-tostadero-brasa", "name": "Brasa", "tag": "Tostadero de café de especialidad", "font": "Fraunces", "fw": "600", "bg": "#f4ece1", "ink": "#2b1d14", "accent": "#c8553d", "caption": "☕ Brasa — Web para un tostadero de café de especialidad.\n\nTonos cálidos, tipografía con carácter y una tienda de cafés por origen para vender online desde el primer día.", "hashtags": ["#cafeteria", "#cafedeespecialidad", "#branding"] },
+    { "slug": "02-ferreyra-asociados", "name": "Ferreyra & Asociados", "tag": "Estudio jurídico", "font": "Cormorant Garamond", "fw": "600", "bg": "#0f1b2d", "ink": "#f6f2ea", "accent": "#c9a45c", "caption": "⚖️ Ferreyra & Asociados — Web para un estudio jurídico.\n\nAzul profundo y dorado para transmitir confianza y trayectoria, con las áreas de práctica claras y un botón de consulta siempre a mano.", "hashtags": ["#abogados", "#estudiojuridico", "#marketingjuridico"] },
+    { "slug": "04-habitat-propiedades", "name": "Hábitat", "tag": "Inmobiliaria", "font": "Plus Jakarta Sans", "fw": "800", "bg": "#eef7f5", "ink": "#10201e", "accent": "#0f766e", "caption": "🏡 Hábitat — Web para una inmobiliaria.\n\nBuscador de propiedades bien visible, fichas limpias con precio y metros, y un diseño fresco que da ganas de agendar una visita.", "hashtags": ["#inmobiliaria", "#realestate", "#propiedades"] },
+    { "slug": "05-sonrie-dental", "name": "Sonríe", "tag": "Clínica odontológica", "font": "Nunito", "fw": "900", "bg": "#e8f1ff", "ink": "#14213d", "accent": "#2563eb", "caption": "🦷 Sonríe — Web para una clínica dental.\n\nColores suaves y amigables, reserva de turnos en la portada y tratamientos explicados en simple para que el paciente llegue tranquilo.", "hashtags": ["#odontologia", "#dentista", "#saludbucal"] },
+    { "slug": "08-patitas-vet", "name": "Patitas", "tag": "Veterinaria y pet shop", "font": "Fredoka", "fw": "700", "bg": "#fff7ec", "ink": "#2d2a26", "accent": "#ff7a1a", "caption": "🐾 Patitas — Web para una veterinaria.\n\nDiseño alegre y redondeado, guardia 24 h bien visible y servicios fáciles de encontrar desde el celular.", "hashtags": ["#veterinaria", "#mascotas", "#petshop"] },
+    { "slug": "09-flowly-fintech", "name": "Flowly", "tag": "Startup fintech (SaaS)", "font": "Sora", "fw": "700", "bg": "#0b0820", "ink": "#f3f1ff", "accent": "#8b5cf6", "caption": "⚡ Flowly — Landing para una startup fintech.\n\nModo oscuro con degradados violeta y cian, un dashboard de producto en la portada y llamados a la acción que invitan a probar gratis.", "hashtags": ["#saas", "#startup", "#fintech", "#landingpage"] }
+  ]
+}

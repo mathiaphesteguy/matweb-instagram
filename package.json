@@ -1,0 +1,13 @@
+{
+  "name": "instagram-webs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "preview": "node scripts/generate.mjs --all",
+    "publish": "node scripts/publish.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.48.2"
+  }
+}

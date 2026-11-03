@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lirio — Florería</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --pink: #f9e8e6; --rose: #e8a6a1; --green: #2f4a3a; --cream: #fffaf6; --muted: #7d6e69; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "DM Sans", sans-serif; background: var(--cream); color: var(--green); }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  .ann { background: var(--green); color: var(--pink); text-align: center; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; padding: 11px; }
+  nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 24px 0; }
+  .links { display: flex; gap: 30px; font-size: 15px; }
+  .logo { font-family: "Playfair Display", serif; font-style: italic; font-size: 40px; }
+  .right { justify-self: end; display: flex; gap: 24px; font-size: 15px; align-items: center; }
+  .right b { background: var(--green); color: var(--cream); border-radius: 999px; padding: 2px 9px; font-size: 13px; margin-left: 6px; }
+  .burger { display: none; width: 24px; height: 14px; border-top: 1.5px solid; border-bottom: 1.5px solid; }
+  .btn { display: inline-block; padding: 16px 30px; border-radius: 999px; background: var(--green); color: var(--cream); font-weight: 500; }
+  .btn.line { background: transparent; color: var(--green); border: 1px solid var(--green); }
+
+  .hero { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center; padding: 40px 0 90px; }
+  .eyebrow { font-size: 13px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+  h1 { font-family: "Playfair Display", serif; font-weight: 500; font-size: 92px; line-height: .98; letter-spacing: -.02em; margin: 22px 0 26px; }
+  h1 em { color: var(--rose); padding-right: .08em; }
+  .lead { font-size: 18px; line-height: 1.7; color: var(--muted); max-width: 440px; }
+  .ctas { display: flex; gap: 14px; margin-top: 38px; }
+  .arches { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: end; }
+  .arch { border-radius: 999px 999px 24px 24px; position: relative; overflow: hidden; display: grid; place-items: end center; }
+  .arch.a { height: 520px; background: linear-gradient(180deg, #f3cfca, var(--pink)); }
+  .arch.b { height: 420px; background: linear-gradient(180deg, #cfdcc9, #eef2e8); }
+  .arch svg { width: 90%; }
+  .arch span { position: absolute; top: 26px; left: 50%; transform: translateX(-50%); background: var(--cream); border-radius: 999px; padding: 8px 16px; font-size: 13px; white-space: nowrap; }
+
+  .shop { background: var(--pink); padding: 90px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 44px; }
+  h2 { font-family: "Playfair Display", serif; font-weight: 500; font-size: 58px; letter-spacing: -.02em; }
+  h2 em { color: var(--rose); }
+  .head a { border-bottom: 1px solid; padding-bottom: 4px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .item .img { aspect-ratio: 4/5; border-radius: 20px; display: grid; place-items: center; position: relative; }
+  .item .img svg { width: 70%; }
+  .item .img i { position: absolute; top: 14px; left: 14px; font-style: normal; background: var(--green); color: var(--cream); font-size: 12px; padding: 5px 11px; border-radius: 999px; }
+  .item h3 { font-family: "Playfair Display", serif; font-weight: 500; font-size: 24px; margin-top: 16px; }
+  .item p { color: var(--muted); margin-top: 4px; display: flex; justify-content: space-between; }
+  .item p b { color: var(--green); }
+  .subs { background: var(--green); color: var(--cream); padding-block: 80px; }
+  .subs .wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+  .subs p { color: #c9d6cc; margin-top: 14px; line-height: 1.7; max-width: 420px; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .plan { border: 1px solid rgba(249,232,230,.3); border-radius: 22px; padding: 26px 24px; }
+  .plan.on { background: var(--pink); color: var(--green); border-color: var(--pink); }
+  .plan small { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+  .plan b { display: block; font-family: "Playfair Display", serif; font-size: 32px; font-weight: 500; margin: 10px 0 6px; }
+  .plan span { font-size: 14px; opacity: .8; }
+  footer { padding: 30px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 22px; }
+    .ann { font-size: 11px; }
+    nav { grid-template-columns: auto 1fr auto; padding: 18px 0; }
+    .links { display: none; }
+    .logo { grid-column: 1; font-size: 32px; }
+    .right { grid-column: 3; gap: 16px; }
+    .right a:not(:last-child) { display: none; }
+    .burger { display: block; }
+    .hero { grid-template-columns: 1fr; padding: 20px 0 60px; gap: 40px; }
+    h1 { font-size: 56px; }
+    .lead { font-size: 16px; }
+    .ctas .btn { padding: 15px 22px; }
+    .arch.a { height: 330px; }
+    .arch.b { height: 270px; }
+    .shop { padding: 60px 0; }
+    .head { flex-direction: column; align-items: start; gap: 10px; margin-bottom: 30px; }
+    h2 { font-size: 42px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .item h3 { font-size: 19px; }
+    .item p { flex-direction: column; font-size: 14px; }
+    .subs { padding-block: 60px; }
+    .subs .wrap { grid-template-columns: 1fr; gap: 30px; }
+    .plans { grid-template-columns: 1fr; gap: 12px; }
+    footer .wrap { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <div class="ann">Envíos en el día en CABA pidiendo antes de las 14 h</div>
+  <header class="wrap">
+    <nav>
+      <div class="links"><a href="#">Ramos</a><a href="#">Plantas</a><a href="#">Eventos</a><a href="#">Suscripción</a></div>
+      <a class="logo" href="#">Lirio</a>
+      <div class="right"><a href="#">Buscar</a><a href="#">Cuenta</a><a href="#">Carrito<b>2</b></a><span class="burger"></span></div>
+    </nav>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Florería de autor · Recoleta</p>
+        <h1>Flores que cuentan <em>historias.</em></h1>
+        <p class="lead">Ramos armados a mano con flores de estación, envueltos en papel reciclado y entregados con una tarjeta escrita por nosotras.</p>
+        <div class="ctas"><a class="btn" href="#">Elegir un ramo</a><a class="btn line" href="#">Suscripción semanal</a></div>
+      </div>
+      <div class="arches">
+        <div class="arch a"><span>Ramo Aurora · $ 38.000</span>
+          <svg viewBox="0 0 200 260">
+            <path d="M100 260V150M100 190l-30-40M100 200l34-46" stroke="#2f4a3a" stroke-width="4" fill="none"/>
+            <path d="M70 175c-24-4-36-20-34-34 18 2 30 14 34 34ZM132 180c22-8 30-24 26-38-16 4-26 18-26 38Z" fill="#5d8a6a"/>
+            <g fill="#e8a6a1"><circle cx="100" cy="106" r="26"/><circle cx="70" cy="132" r="20"/><circle cx="134" cy="136" r="22"/></g>
+            <g fill="#f7d3cf"><circle cx="100" cy="106" r="13"/><circle cx="70" cy="132" r="10"/><circle cx="134" cy="136" r="11"/></g>
+            <g fill="#fffaf6"><circle cx="58" cy="96" r="12"/><circle cx="146" cy="96" r="12"/><circle cx="100" cy="66" r="12"/></g>
+            <path d="M60 210h80l-12 50H72Z" fill="#2f4a3a"/>
+          </svg>
+        </div>
+        <div class="arch b"><span>Plantas de interior</span>
+          <svg viewBox="0 0 200 220">
+            <path d="M100 160c-6-50-40-80-70-84 4 40 30 74 70 84ZM100 160c6-56 36-92 70-98-2 46-30 84-70 98ZM100 160c-2-60 10-110 0-140-14 30-16 90 0 140Z" fill="#5d8a6a"/>
+            <path d="M60 160h80l-10 60H70Z" fill="#e8a6a1"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <section class="shop">
+    <div class="wrap">
+      <div class="head"><h2>Los más <em>elegidos</em></h2><a href="#">Ver toda la tienda</a></div>
+      <div class="grid">
+        <article class="item"><div class="img" style="background:#f3cfca"><i>Nuevo</i><svg viewBox="0 0 100 100"><g fill="#c76b66"><circle cx="50" cy="40" r="16"/><circle cx="32" cy="56" r="12"/><circle cx="68" cy="56" r="12"/></g><path d="M50 60v40" stroke="#2f4a3a" stroke-width="3"/></svg></div><h3>Ramo Aurora</h3><p>Rosas y peonías <b>$ 38.000</b></p></article>
+        <article class="item"><div class="img" style="background:#fbe4c6"><svg viewBox="0 0 100 100"><g fill="#f0a830"><circle cx="50" cy="38" r="14"/><circle cx="30" cy="52" r="11"/><circle cx="70" cy="52" r="11"/></g><g fill="#7a4b1a"><circle cx="50" cy="38" r="6"/><circle cx="30" cy="52" r="4"/><circle cx="70" cy="52" r="4"/></g><path d="M50 56v44" stroke="#2f4a3a" stroke-width="3"/></svg></div><h3>Girasoles</h3><p>Ramo de estación <b>$ 26.500</b></p></article>
+        <article class="item"><div class="img" style="background:#e6e3f3"><svg viewBox="0 0 100 100"><g fill="#8e7cc3"><circle cx="50" cy="24" r="8"/><circle cx="50" cy="38" r="9"/><circle cx="50" cy="53" r="10"/></g><path d="M50 62v38" stroke="#2f4a3a" stroke-width="3"/></svg></div><h3>Lavanda</h3><p>Seca, en manojo <b>$ 14.900</b></p></article>
+        <article class="item"><div class="img" style="background:#dfe8d9"><svg viewBox="0 0 100 100"><path d="M50 70c-4-30-24-44-40-46 2 24 18 40 40 46ZM50 70c4-32 22-50 40-52-2 26-18 44-40 52Z" fill="#5d8a6a"/><path d="M34 70h32l-5 28H39Z" fill="#c9b39b"/></svg></div><h3>Monstera</h3><p>Con maceta de barro <b>$ 31.000</b></p></article>
+      </div>
+    </div>
+  </section>
+  <section class="subs">
+    <div class="wrap">
+      <div><h2>Flores frescas, <em>cada semana.</em></h2><p>Sumate a la suscripción y recibí un ramo de estación en tu casa u oficina. Pausás o cancelás cuando quieras.</p></div>
+      <div class="plans">
+        <div class="plan"><small>Semanal</small><b>$ 29.000</b><span>4 ramos al mes</span></div>
+        <div class="plan on"><small>Quincenal</small><b>$ 31.500</b><span>2 ramos grandes</span></div>
+        <div class="plan"><small>Mensual</small><b>$ 33.000</b><span>1 ramo premium</span></div>
+      </div>
+    </div>
+  </section>
+  <footer><div class="wrap"><span>© Lirio Florería · Juncal 1980, Recoleta</span><span>@lirio.flores</span></div></footer>
+</body>
+</html>

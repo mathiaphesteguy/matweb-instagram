@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulso — Gimnasio funcional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0b0b0b; --card: #161616; --lime: #c6ff3d; --text: #f2f2f2; --muted: #8d8d8d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 26px 0; }
+  .logo { font-family: Anton, sans-serif; font-size: 34px; letter-spacing: .02em; }
+  .logo span { color: var(--lime); }
+  .links { display: flex; gap: 36px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .btn { display: inline-block; padding: 17px 30px; background: var(--lime); color: #0b0b0b; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 14px; border-radius: 4px; }
+  .btn.dark { background: transparent; color: var(--text); border: 2px solid #333; }
+  .burger { display: none; width: 30px; height: 20px; border-top: 3px solid var(--lime); border-bottom: 3px solid var(--lime); }
+
+  .hero { position: relative; padding: 40px 0 70px; }
+  .tag { display: inline-flex; gap: 10px; align-items: center; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--lime); }
+  .tag i { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 18px var(--lime); }
+  h1 { font-family: Anton, sans-serif; font-weight: 400; font-size: 190px; line-height: .86; text-transform: uppercase; margin: 22px 0 0; letter-spacing: -.005em; }
+  h1 .out { color: transparent; -webkit-text-stroke: 2px var(--text); }
+  h1 .lime { color: var(--lime); }
+  .row { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: end; margin-top: 40px; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 520px; line-height: 1.6; }
+  .ctas { display: flex; gap: 14px; margin-top: 30px; }
+  .today { background: var(--card); border: 1px solid #262626; border-radius: 14px; padding: 26px; }
+  .today h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 14px; }
+  .cls { display: flex; justify-content: space-between; padding: 13px 0; border-top: 1px solid #262626; font-weight: 700; }
+  .cls span { color: var(--muted); font-weight: 500; }
+  .cls em { font-style: normal; color: var(--lime); font-size: 12px; text-transform: uppercase; }
+  .marquee { background: var(--lime); color: #0b0b0b; font-family: Anton, sans-serif; font-size: 44px; text-transform: uppercase; white-space: nowrap; padding: 18px 0; transform: rotate(-2deg); margin: 30px -40px 0; overflow: hidden; }
+  .marquee span { margin: 0 26px; }
+
+  .plans { padding-block: 120px 100px; }
+  h2 { font-family: Anton, sans-serif; font-weight: 400; font-size: 86px; text-transform: uppercase; line-height: .95; }
+  h2 span { color: var(--lime); }
+  .sub { color: var(--muted); margin-top: 14px; font-size: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 56px; }
+  .plan { background: var(--card); border: 1px solid #262626; border-radius: 18px; padding: 36px; }
+  .plan.hot { background: var(--lime); color: #0b0b0b; border-color: var(--lime); transform: translateY(-14px); }
+  .plan h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .14em; }
+  .price { font-family: Anton, sans-serif; font-size: 72px; margin: 18px 0 4px; }
+  .price small { font-family: Inter; font-size: 16px; font-weight: 500; opacity: .7; }
+  .plan ul { list-style: none; margin: 24px 0 30px; }
+  .plan li { padding: 11px 0; border-top: 1px solid rgba(128,128,128,.25); font-size: 15px; }
+  .plan li::before { content: "→ "; font-weight: 800; }
+  .plan .btn { display: block; text-align: center; }
+  .plan.hot .btn { background: #0b0b0b; color: var(--lime); }
+  footer { border-top: 1px solid #222; padding: 30px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 20px; }
+    .links, nav .btn { display: none; }
+    .burger { display: block; }
+    .hero { padding: 20px 0 50px; }
+    h1 { font-size: 92px; }
+    h1 .out { -webkit-text-stroke-width: 1.5px; }
+    .row { grid-template-columns: 1fr; gap: 34px; margin-top: 26px; }
+    .lead { font-size: 16px; }
+    .ctas .btn { padding: 15px 20px; }
+    .marquee { font-size: 30px; margin: 10px -20px 0; }
+    .plans { padding-block: 80px 60px; }
+    h2 { font-size: 58px; }
+    .grid { grid-template-columns: 1fr; }
+    .plan.hot { transform: none; }
+    footer .wrap { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <header class="wrap">
+    <nav>
+      <a class="logo" href="#">PULSO<span>.</span></a>
+      <div class="links"><a href="#">Clases</a><a href="#">Planes</a><a href="#">Coaches</a><a href="#">Sedes</a></div>
+      <a class="btn" href="#">Clase gratis</a>
+      <span class="burger"></span>
+    </nav>
+    <section class="hero">
+      <span class="tag"><i></i>Abierto 6 a 23 h · Nuñez</span>
+      <h1><span class="out">Entrená</span><br>sin <span class="lime">excusas</span></h1>
+      <div class="row">
+        <div>
+          <p class="lead">Funcional, cross training y musculación con coaches que corrigen cada repetición. Grupos reducidos y seguimiento real de tu progreso.</p>
+          <div class="ctas"><a class="btn" href="#">Reservar clase gratis</a><a class="btn dark" href="#">Ver horarios</a></div>
+        </div>
+        <div class="today">
+          <h4>Hoy en Pulso</h4>
+          <div class="cls">07:00 Cross training <em>3 lugares</em></div>
+          <div class="cls">12:30 Funcional <span>Coach Mica</span></div>
+          <div class="cls">19:00 HIIT 45' <em>Últimos 2</em></div>
+          <div class="cls">20:30 Movilidad <span>Coach Fran</span></div>
+        </div>
+      </div>
+    </section>
+  </header>
+  <div class="marquee"><span>Fuerza</span>✦<span>Cardio</span>✦<span>Comunidad</span>✦<span>Constancia</span>✦<span>Fuerza</span>✦<span>Cardio</span>✦<span>Comunidad</span></div>
+
+  <section class="plans wrap">
+    <h2>Elegí tu <span>ritmo</span></h2>
+    <p class="sub">Sin matrícula. Cancelás cuando quieras.</p>
+    <div class="grid">
+      <article class="plan"><h3>Base</h3><div class="price">$ 32k<small> /mes</small></div><ul><li>2 clases por semana</li><li>Sala de musculación</li><li>App de seguimiento</li></ul><a class="btn dark" href="#">Elegir</a></article>
+      <article class="plan hot"><h3>Full · el más elegido</h3><div class="price">$ 45k<small> /mes</small></div><ul><li>Clases ilimitadas</li><li>Evaluación física mensual</li><li>Plan nutricional básico</li></ul><a class="btn" href="#">Elegir</a></article>
+      <article class="plan"><h3>Personal</h3><div class="price">$ 89k<small> /mes</small></div><ul><li>8 sesiones 1 a 1</li><li>Rutina 100% personalizada</li><li>Acceso libre a clases</li></ul><a class="btn dark" href="#">Elegir</a></article>
+    </div>
+  </section>
+  <footer><div class="wrap"><span>© Pulso Gym · Av. Cabildo 3900</span><span>@pulso.gym</span></div></footer>
+</body>
+</html>

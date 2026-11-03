@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patitas — Veterinaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --orange: #ff7a1a; --cream: #fff7ec; --peach: #ffe1c7; --ink: #2d2a26; --muted: #6f675e; --green: #2fb380; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Fredoka, sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 26px 0; }
+  .logo { font-weight: 700; font-size: 30px; display: flex; align-items: center; gap: 8px; }
+  .logo svg { width: 38px; }
+  .links { display: flex; gap: 32px; font-weight: 500; font-size: 17px; }
+  .btn { display: inline-block; padding: 15px 28px; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 600; font-size: 17px; box-shadow: 0 6px 0 #d45e08; }
+  .btn.alt { background: #fff; color: var(--ink); box-shadow: 0 6px 0 #e9d7c3; }
+  .burger { display: none; width: 44px; height: 44px; border-radius: 14px; background: #fff; position: relative; }
+  .burger::after { content: ""; position: absolute; left: 12px; right: 12px; top: 14px; height: 12px; border-top: 3px solid; border-bottom: 3px solid; }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 30px 0 80px; }
+  .pill { display: inline-flex; gap: 8px; align-items: center; background: #fff; padding: 8px 16px; border-radius: 999px; font-weight: 500; }
+  .pill i { width: 10px; height: 10px; border-radius: 50%; background: var(--green); }
+  h1 { font-size: 80px; line-height: .98; font-weight: 700; margin: 22px 0; letter-spacing: -.02em; }
+  h1 span { color: var(--orange); }
+  .lead { font-size: 20px; color: var(--muted); line-height: 1.55; max-width: 480px; }
+  .ctas { display: flex; gap: 16px; margin-top: 36px; }
+  .pets { position: relative; height: 540px; }
+  .blob1 { position: absolute; inset: 30px 20px 0 40px; background: var(--orange); border-radius: 58% 42% 50% 50% / 48% 52% 48% 52%; }
+  .blob2 { position: absolute; width: 150px; height: 150px; right: 0; top: 0; background: var(--peach); border-radius: 50%; }
+  .pets svg.dog { position: absolute; left: 50%; bottom: 0; width: 400px; transform: translateX(-46%); }
+  .bubble { position: absolute; background: #fff; border-radius: 20px; padding: 12px 18px; font-weight: 600; box-shadow: 0 16px 30px rgba(45,42,38,.12); }
+  .bubble small { display: block; font-weight: 400; color: var(--muted); font-size: 14px; }
+  .b1 { left: 0; top: 110px; }
+  .b2 { right: 10px; bottom: 70px; }
+
+  .services { padding-block: 90px 30px; }
+  .team { padding-block: 60px 20px; }
+  .team .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .vet { background: #fff; border-radius: 30px; padding: 24px; display: flex; gap: 18px; align-items: center; }
+  .vet .av { width: 84px; height: 84px; border-radius: 26px; flex: none; display: grid; place-items: center; font-size: 30px; font-weight: 700; color: #fff; }
+  .vet h3 { font-size: 22px; font-weight: 600; }
+  .vet p { color: var(--muted); }
+  .vet b { display: inline-block; margin-top: 8px; background: var(--peach); color: #c25500; border-radius: 999px; padding: 3px 12px; font-size: 14px; font-weight: 500; }
+  h2 { font-size: 54px; font-weight: 700; text-align: center; letter-spacing: -.02em; }
+  h2 span { color: var(--orange); }
+  .sub { text-align: center; color: var(--muted); font-size: 19px; margin-top: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+  .card { background: #fff; border-radius: 30px; padding: 30px 26px; border: 3px solid transparent; }
+  .card.hl { border-color: var(--orange); }
+  .ico { width: 70px; height: 70px; border-radius: 22px; display: grid; place-items: center; margin-bottom: 18px; }
+  .ico svg { width: 36px; }
+  .card h3 { font-size: 24px; font-weight: 600; }
+  .card p { color: var(--muted); margin-top: 6px; line-height: 1.5; font-size: 17px; }
+  .emer { max-width: 1160px; margin: 30px auto 0; background: var(--ink); color: #fff; border-radius: 30px; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .emer h3 { font-size: 28px; font-weight: 600; }
+  .emer h3 span { color: var(--orange); }
+  .emer p { color: #bdb3a8; }
+  footer { padding: 40px 0 30px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 20px; }
+    .links, nav .btn { display: none; }
+    .burger { display: block; }
+    .hero { grid-template-columns: 1fr; padding: 10px 0 60px; gap: 30px; }
+    h1 { font-size: 50px; }
+    .lead { font-size: 18px; }
+    .ctas .btn { padding: 14px 20px; font-size: 16px; }
+    .pets { height: 380px; }
+    .pets svg.dog { width: 290px; }
+    .b1 { top: 50px; }
+    .b2 { bottom: 30px; right: 0; }
+    .services { padding-block: 60px 20px; }
+    .team { padding-block: 40px 10px; }
+    .team .grid3 { grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+    h2 { font-size: 38px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card { padding: 20px 16px; border-radius: 24px; }
+    .card h3 { font-size: 20px; }
+    .card p { font-size: 15px; }
+    .emer { flex-direction: column; align-items: start; margin: 20px; padding: 26px; }
+    footer .wrap { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <header class="wrap">
+    <nav>
+      <a class="logo" href="#"><svg viewBox="0 0 40 40" fill="#ff7a1a"><ellipse cx="20" cy="27" rx="9" ry="8"/><circle cx="9" cy="16" r="4.5"/><circle cx="16" cy="9" r="4.5"/><circle cx="24" cy="9" r="4.5"/><circle cx="31" cy="16" r="4.5"/></svg>patitas</a>
+      <div class="links"><a href="#">Servicios</a><a href="#">Peluquería</a><a href="#">Tienda</a><a href="#">Contacto</a></div>
+      <a class="btn" href="#">Sacar turno</a>
+      <span class="burger"></span>
+    </nav>
+    <section class="hero">
+      <div>
+        <span class="pill"><i></i>Guardia abierta ahora</span>
+        <h1>Cuidamos a quien <span>más te quiere.</span></h1>
+        <p class="lead">Clínica veterinaria, peluquería y pet shop en un solo lugar. Veterinarios que tratan a tu mascota como si fuera de la familia.</p>
+        <div class="ctas"><a class="btn" href="#">Sacar turno</a><a class="btn alt" href="#">WhatsApp</a></div>
+      </div>
+      <div class="pets">
+        <div class="blob2"></div>
+        <div class="blob1"></div>
+        <svg class="dog" viewBox="0 0 300 260">
+          <path d="M70 70c-30-6-50 30-40 70 6 22 26 22 34 8Z" fill="#8a5a3c"/>
+          <path d="M230 70c30-6 50 30 40 70-6 22-26 22-34 8Z" fill="#8a5a3c"/>
+          <path d="M60 260c0-60 40-90 90-90s90 30 90 90Z" fill="#f4c99a"/>
+          <ellipse cx="150" cy="120" rx="88" ry="82" fill="#f4c99a"/>
+          <ellipse cx="150" cy="150" rx="44" ry="34" fill="#fff3e4"/>
+          <circle cx="116" cy="110" r="10" fill="#2d2a26"/><circle cx="184" cy="110" r="10" fill="#2d2a26"/>
+          <circle cx="119" cy="107" r="3" fill="#fff"/><circle cx="187" cy="107" r="3" fill="#fff"/>
+          <ellipse cx="150" cy="136" rx="14" ry="10" fill="#2d2a26"/>
+          <path d="M136 156c6 8 22 8 28 0" stroke="#2d2a26" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M146 162c0 14 8 16 8 0" fill="#ff6b6b"/>
+          <path d="M100 210h100" stroke="#2fb380" stroke-width="14" stroke-linecap="round"/>
+          <circle cx="150" cy="224" r="12" fill="#ffd400"/>
+        </svg>
+        <div class="bubble b1">🐾 Toby, 3 años<small>Control al día</small></div>
+        <div class="bubble b2">💉 Vacunas<small>Próxima: 12 de dic</small></div>
+      </div>
+    </section>
+  </header>
+
+  <section class="services wrap">
+    <h2>Todo para su <span>bienestar</span></h2>
+    <p class="sub">Perros, gatos y pequeños animales.</p>
+    <div class="grid">
+      <article class="card"><div class="ico" style="background:#ffe1c7"><svg viewBox="0 0 24 24" fill="none" stroke="#ff7a1a" stroke-width="2.4" stroke-linecap="round"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11Z"/></svg></div><h3>Consultas</h3><p>Clínica general y especialistas.</p></article>
+      <article class="card hl"><div class="ico" style="background:#d6f5e8"><svg viewBox="0 0 24 24" fill="none" stroke="#2fb380" stroke-width="2.4" stroke-linecap="round"><path d="m18 2 4 4M15 5l4 4M3 21l4-4M7 17l-2-2 9-9 4 4-9 9Z"/></svg></div><h3>Vacunación</h3><p>Plan anual con recordatorios.</p></article>
+      <article class="card"><div class="ico" style="background:#e6e9ff"><svg viewBox="0 0 24 24" fill="none" stroke="#5560ff" stroke-width="2.4" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8 20 18M8.5 16 20 6"/></svg></div><h3>Peluquería</h3><p>Baño, corte y deslanado.</p></article>
+      <article class="card"><div class="ico" style="background:#ffe0e0"><svg viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="2.4" stroke-linecap="round"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="5"/></svg></div><h3>Guardia 24 h</h3><p>Urgencias todos los días.</p></article>
+    </div>
+  </section>
+  <section class="team wrap">
+    <h2>Nuestro <span>equipo</span></h2>
+    <div class="grid3">
+      <article class="vet"><div class="av" style="background:#ff7a1a">VA</div><div><h3>Dra. Valeria Acosta</h3><p>Clínica general</p><b>12 años de experiencia</b></div></article>
+      <article class="vet"><div class="av" style="background:#2fb380">TM</div><div><h3>Dr. Tomás Medina</h3><p>Cirugía y traumatología</p><b>Guardia nocturna</b></div></article>
+      <article class="vet"><div class="av" style="background:#5560ff">SR</div><div><h3>Dra. Sofía Ríos</h3><p>Felinos y exóticos</p><b>Cat friendly</b></div></article>
+    </div>
+  </section>
+  <div class="emer"><div><h3>¿Es una urgencia? <span>Llamanos ya.</span></h3><p>Atendemos las 24 horas, los 365 días del año.</p></div><a class="btn" href="#">011 4555-7788</a></div>
+  <footer><div class="wrap"><span>© Patitas Veterinaria · Av. Rivadavia 6120, Caballito</span><span>@patitas.vet</span></div></footer>
+</body>
+</html>

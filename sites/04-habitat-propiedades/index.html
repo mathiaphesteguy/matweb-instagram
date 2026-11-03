@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hábitat — Propiedades</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --teal: #0f766e; --teal-l: #ccfbf1; --ink: #10201e; --muted: #5d6b69; --sand: #f5f1ea; --line: #e5e1d8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Plus Jakarta Sans", sans-serif; background: #fff; color: var(--ink); }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1260px; margin: 0 auto; padding: 0 40px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 26px 0; }
+  .logo { font-weight: 800; font-size: 24px; display: flex; align-items: center; gap: 10px; }
+  .logo i { width: 34px; height: 34px; border-radius: 10px; background: var(--teal); display: grid; place-items: center; }
+  .logo i::after { content: ""; width: 14px; height: 12px; background: #fff; clip-path: polygon(50% 0, 100% 45%, 100% 100%, 0 100%, 0 45%); }
+  .links { display: flex; gap: 34px; font-weight: 500; font-size: 15px; color: var(--muted); }
+  .btn { display: inline-block; padding: 14px 24px; border-radius: 12px; background: var(--teal); color: #fff; font-weight: 700; font-size: 15px; }
+  .btn.soft { background: var(--sand); color: var(--ink); }
+  .burger { display: none; width: 26px; height: 18px; border-top: 2.5px solid; border-bottom: 2.5px solid; }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 40px 0 80px; }
+  .chip { display: inline-block; background: var(--teal-l); color: var(--teal); font-weight: 700; font-size: 13px; padding: 8px 14px; border-radius: 999px; }
+  h1 { font-size: 72px; line-height: 1.02; letter-spacing: -.04em; font-weight: 800; margin: 22px 0 22px; }
+  h1 span { color: var(--teal); }
+  .lead { font-size: 18px; color: var(--muted); line-height: 1.6; max-width: 500px; }
+  .search { margin-top: 36px; background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 10px; box-shadow: 0 24px 50px rgba(16,32,30,.08); }
+  .tabs { display: flex; gap: 6px; padding: 6px 6px 12px; }
+  .tabs span { padding: 8px 16px; border-radius: 10px; font-weight: 600; font-size: 14px; color: var(--muted); }
+  .tabs .on { background: var(--ink); color: #fff; }
+  .fields { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 8px; }
+  .field { background: var(--sand); border-radius: 12px; padding: 12px 16px; }
+  .field small { display: block; font-size: 12px; color: var(--muted); }
+  .field b { font-size: 15px; }
+  .search .btn { display: grid; place-items: center; padding: 0 26px; }
+  .visual { position: relative; height: 560px; }
+  .photo { position: absolute; border-radius: 28px; overflow: hidden; }
+  .photo.a { inset: 0 70px 60px 0; background: linear-gradient(180deg, #a7d8de 0%, #e9f4f1 62%, #c9d9b8 62%, #9cbf8a 100%); }
+  .photo.b { right: 0; bottom: 0; width: 250px; height: 200px; background: linear-gradient(160deg, #f4d6b8, #e7a77a); border: 8px solid #fff; }
+  .photo svg { position: absolute; left: 0; bottom: 0; width: 100%; }
+  .float { position: absolute; left: -26px; bottom: 100px; background: #fff; border-radius: 18px; padding: 16px 20px; box-shadow: 0 20px 40px rgba(16,32,30,.14); display: flex; gap: 14px; align-items: center; }
+  .float i { width: 44px; height: 44px; border-radius: 12px; background: var(--teal-l); display: grid; place-items: center; color: var(--teal); font-style: normal; font-weight: 800; }
+  .float small { display: block; color: var(--muted); font-size: 13px; }
+
+  .listings { background: var(--sand); padding: 90px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 40px; }
+  h2 { font-size: 46px; letter-spacing: -.035em; font-weight: 800; }
+  .head a { font-weight: 700; color: var(--teal); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { background: #fff; border-radius: 22px; overflow: hidden; }
+  .card .img { height: 210px; position: relative; }
+  .card .img span { position: absolute; top: 14px; left: 14px; background: #fff; border-radius: 8px; font-size: 12px; font-weight: 700; padding: 6px 10px; }
+  .card .body { padding: 22px; }
+  .card .price { font-size: 24px; font-weight: 800; }
+  .card .addr { color: var(--muted); margin: 4px 0 16px; font-size: 15px; }
+  .specs { display: flex; gap: 16px; font-size: 14px; font-weight: 600; border-top: 1px solid var(--line); padding-top: 14px; }
+  .sell { padding-block: 90px; }
+  .sell .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .sell .lead { margin-top: 14px; }
+  .steps { display: grid; gap: 18px; margin-top: 30px; }
+  .step { display: flex; gap: 16px; align-items: flex-start; }
+  .step b { width: 42px; height: 42px; border-radius: 12px; background: var(--teal-l); color: var(--teal); display: grid; place-items: center; flex: none; font-weight: 800; }
+  .step h4 { font-size: 18px; }
+  .step p { color: var(--muted); font-size: 15px; margin-top: 2px; }
+  .tasa { background: var(--teal); color: #fff; border-radius: 28px; padding: 40px; }
+  .tasa h3 { font-size: 32px; letter-spacing: -.03em; font-weight: 800; line-height: 1.1; }
+  .tasa p { color: #b7e4dd; margin: 12px 0 28px; line-height: 1.6; }
+  .nums { display: flex; gap: 40px; margin-bottom: 30px; }
+  .nums b { display: block; font-size: 36px; font-weight: 800; letter-spacing: -.03em; }
+  .nums span { color: #b7e4dd; font-size: 14px; }
+  .tasa .btn { background: #fff; color: var(--teal); }
+  footer { padding: 30px 0; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 20px; }
+    .links, nav .btn { display: none; }
+    .burger { display: block; }
+    .hero { grid-template-columns: 1fr; padding: 16px 0 60px; gap: 40px; }
+    h1 { font-size: 44px; }
+    .lead { font-size: 16px; }
+    .fields { grid-template-columns: 1fr; }
+    .search .btn { padding: 15px; }
+    .visual { height: 380px; }
+    .photo.a { inset: 0 40px 50px 0; }
+    .photo.b { width: 170px; height: 140px; }
+    .float { left: 10px; bottom: 20px; }
+    .listings { padding: 60px 0; }
+    .head { flex-direction: column; align-items: start; gap: 8px; }
+    h2 { font-size: 34px; }
+    .grid { grid-template-columns: 1fr; }
+    .sell { padding-block: 60px; }
+    .sell .wrap { grid-template-columns: 1fr; gap: 36px; }
+    .tasa { padding: 28px; }
+    .tasa h3 { font-size: 26px; }
+    .nums { gap: 26px; }
+    .nums b { font-size: 28px; }
+    footer .wrap { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <header class="wrap">
+    <nav>
+      <a class="logo" href="#"><i></i>Hábitat</a>
+      <div class="links"><a href="#">Comprar</a><a href="#">Alquilar</a><a href="#">Tasaciones</a><a href="#">Emprendimientos</a></div>
+      <a class="btn" href="#">Publicar propiedad</a>
+      <span class="burger"></span>
+    </nav>
+    <section class="hero">
+      <div>
+        <span class="chip">+850 propiedades verificadas</span>
+        <h1>Encontrá el lugar donde <span>empieza</span> tu historia.</h1>
+        <p class="lead">Casas, departamentos y lotes en zona norte, con asesores que te acompañan desde la primera visita hasta la escritura.</p>
+        <div class="search">
+          <div class="tabs"><span class="on">Comprar</span><span>Alquilar</span><span>Temporario</span></div>
+          <div class="fields">
+            <div class="field"><small>Ubicación</small><b>Vicente López</b></div>
+            <div class="field"><small>Tipo</small><b>Casa · 3 amb.</b></div>
+            <a class="btn" href="#">Buscar</a>
+          </div>
+        </div>
+      </div>
+      <div class="visual">
+        <div class="photo a">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMax meet">
+            <rect x="70" y="120" width="260" height="150" fill="#fbfaf7"/>
+            <path d="M50 130 200 40l150 90" fill="none" stroke="#10201e" stroke-width="14" stroke-linejoin="round"/>
+            <rect x="110" y="160" width="70" height="56" rx="4" fill="#7cc4cc"/><rect x="220" y="160" width="70" height="56" rx="4" fill="#7cc4cc"/>
+            <rect x="180" y="210" width="40" height="60" rx="3" fill="#0f766e"/>
+            <circle cx="30" cy="230" r="34" fill="#5f9b5a"/><circle cx="370" cy="220" r="44" fill="#6fae66"/>
+            <rect x="0" y="268" width="400" height="32" fill="#86b374"/>
+          </svg>
+        </div>
+        <div class="photo b"></div>
+        <div class="float"><i>✓</i><div><b>Visita agendada</b><small>Sáb 10:30 · Florida</small></div></div>
+      </div>
+    </section>
+  </header>
+
+  <section class="listings">
+    <div class="wrap">
+      <div class="head"><h2>Destacadas de la semana</h2><a href="#">Ver todas →</a></div>
+      <div class="grid">
+        <article class="card"><div class="img" style="background:linear-gradient(135deg,#b9e3e0,#5fb3a8)"><span>Venta</span></div><div class="body"><div class="price">USD 245.000</div><div class="addr">Casa con jardín · Florida</div><div class="specs"><span>4 amb.</span><span>180 m²</span><span>2 baños</span></div></div></article>
+        <article class="card"><div class="img" style="background:linear-gradient(135deg,#f6dcc2,#e2a073)"><span>Alquiler</span></div><div class="body"><div class="price">$ 780.000 /mes</div><div class="addr">Depto con balcón · Olivos</div><div class="specs"><span>3 amb.</span><span>72 m²</span><span>Cochera</span></div></div></article>
+        <article class="card"><div class="img" style="background:linear-gradient(135deg,#d8e2c8,#8fb07a)"><span>Venta</span></div><div class="body"><div class="price">USD 132.000</div><div class="addr">PH reciclado · Munro</div><div class="specs"><span>3 amb.</span><span>95 m²</span><span>Terraza</span></div></div></article>
+      </div>
+    </div>
+  </section>
+  <section class="sell">
+    <div class="wrap">
+      <div>
+        <h2>¿Querés vender o alquilar tu propiedad?</h2>
+        <p class="lead">Nos ocupamos de todo para que vos solo firmes.</p>
+        <div class="steps">
+          <div class="step"><b>1</b><div><h4>Tasación sin cargo</h4><p>Un asesor visita tu propiedad en 48 h.</p></div></div>
+          <div class="step"><b>2</b><div><h4>Fotos y video profesional</h4><p>Publicamos en los principales portales.</p></div></div>
+          <div class="step"><b>3</b><div><h4>Visitas filtradas</h4><p>Solo te llegan interesados con aprobación.</p></div></div>
+        </div>
+      </div>
+      <div class="tasa">
+        <h3>Tasá tu propiedad gratis en zona norte</h3>
+        <p>Recibí un informe con el valor de mercado y el tiempo estimado de venta.</p>
+        <div class="nums"><div><b>45 días</b><span>promedio de venta</span></div><div><b>+1.900</b><span>operaciones cerradas</span></div></div>
+        <a class="btn" href="#">Pedir tasación</a>
+      </div>
+    </div>
+  </section>
+  <footer><div class="wrap"><span>© Hábitat Propiedades · Mat. CUCICBA 6712</span><span>Av. Maipú 1450, Vicente López</span></div></footer>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaze — Sushi bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0d0d0d; --paper: #f3ede3; --red: #e63946; --muted: #8f8a82; --line: #2a2a2a; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, sans-serif; background: var(--bg); color: var(--paper); }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 30px 0; }
+  .logo { font-family: "Shippori Mincho", serif; font-size: 26px; font-weight: 800; letter-spacing: .3em; }
+  .links { display: flex; gap: 44px; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+  .btn { display: inline-block; padding: 15px 28px; border: 1px solid var(--paper); font-size: 13px; letter-spacing: .2em; text-transform: uppercase; }
+  .btn.red { background: var(--red); border-color: var(--red); }
+  .burger { display: none; width: 26px; height: 14px; border-top: 1.5px solid; border-bottom: 1.5px solid; }
+
+  .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 40px 0 110px; position: relative; }
+  .kanji { font-family: "Shippori Mincho", serif; writing-mode: vertical-rl; font-size: 15px; letter-spacing: .6em; color: var(--muted); position: absolute; left: -6px; top: 60px; }
+  .txt { padding-left: 40px; }
+  .jp { color: var(--red); font-family: "Shippori Mincho", serif; font-size: 18px; letter-spacing: .4em; }
+  h1 { font-family: "Shippori Mincho", serif; font-weight: 700; font-size: 96px; line-height: 1; margin: 22px 0 28px; letter-spacing: -.01em; }
+  .lead { font-size: 17px; color: var(--muted); line-height: 1.8; max-width: 440px; }
+  .ctas { display: flex; gap: 14px; margin-top: 42px; }
+  .sun { position: relative; aspect-ratio: 1; max-width: 520px; justify-self: end; width: 100%; }
+  .sun .disc { position: absolute; inset: 0; border-radius: 50%; background: var(--red); }
+  .sun .char { position: absolute; inset: 0; display: grid; place-items: center; font-family: "Shippori Mincho", serif; font-size: 290px; font-weight: 800; color: var(--bg); line-height: 1; }
+  .sun .ring { position: absolute; inset: -26px; border: 1px solid #3a3a3a; border-radius: 50%; }
+  .sun small { position: absolute; right: -10px; bottom: 30px; background: var(--paper); color: var(--bg); padding: 14px 18px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+
+  .menu { background: var(--paper); color: var(--bg); padding: 110px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 60px; gap: 30px; }
+  h2 { font-family: "Shippori Mincho", serif; font-size: 60px; font-weight: 700; line-height: 1; }
+  h2 small { display: block; font-size: 16px; letter-spacing: .4em; color: var(--red); margin-bottom: 16px; }
+  .head p { max-width: 360px; color: #5e5850; line-height: 1.7; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 90px; }
+  .dish { padding: 24px 0; border-bottom: 1px solid #d8cfc1; }
+  .dish .r { display: flex; align-items: baseline; gap: 12px; }
+  .dish h3 { font-family: "Shippori Mincho", serif; font-size: 26px; font-weight: 700; }
+  .dish i { flex: 1; border-bottom: 1px dotted #b3a898; transform: translateY(-6px); }
+  .dish b { font-family: "Shippori Mincho", serif; font-size: 22px; }
+  .dish p { color: #6b6459; margin-top: 6px; font-size: 15px; }
+  .dish .chef { color: var(--red); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; margin-left: 8px; font-family: Inter; }
+  .res { padding-block: 90px; text-align: center; }
+  .res h2 { font-size: 52px; }
+  .res p { color: var(--muted); margin: 16px 0 34px; }
+  footer { border-top: 1px solid var(--line); padding: 30px 0; color: var(--muted); font-size: 13px; letter-spacing: .06em; }
+  footer .wrap { display: flex; justify-content: space-between; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 22px; }
+    .links, nav .btn { display: none; }
+    .burger { display: block; }
+    .hero { grid-template-columns: 1fr; padding: 10px 0 80px; gap: 60px; }
+    .kanji { display: none; }
+    .txt { padding-left: 0; }
+    h1 { font-size: 58px; }
+    .lead { font-size: 16px; }
+    .ctas { flex-direction: column; }
+    .ctas .btn { text-align: center; }
+    .sun { width: 82%; justify-self: center; }
+    .sun .char { font-size: 170px; }
+    .sun small { right: -20px; bottom: 0; }
+    .menu { padding: 70px 0; }
+    .head { flex-direction: column; align-items: start; margin-bottom: 30px; }
+    h2 { font-size: 44px; }
+    .cols { grid-template-columns: 1fr; }
+    footer .wrap { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <header class="wrap">
+    <nav>
+      <a class="logo" href="#">KAZE</a>
+      <div class="links"><a href="#">Omakase</a><a href="#">Carta</a><a href="#">Barra</a><a href="#">Delivery</a></div>
+      <a class="btn" href="#">Reservar</a>
+      <span class="burger"></span>
+    </nav>
+    <section class="hero">
+      <span class="kanji">寿司 · 風 · 職人</span>
+      <div class="txt">
+        <p class="jp">風 · 寿司バー</p>
+        <h1>El viento trae lo más fresco.</h1>
+        <p class="lead">Una barra de doce lugares, pescado elegido cada mañana y un omakase de catorce pasos que cambia con la estación.</p>
+        <div class="ctas"><a class="btn red" href="#">Reservar barra</a><a class="btn" href="#">Ver la carta</a></div>
+      </div>
+      <div class="sun"><div class="ring"></div><div class="disc"></div><div class="char">風</div><small>Omakase · 14 pasos</small></div>
+    </section>
+  </header>
+
+  <section class="menu">
+    <div class="wrap">
+      <div class="head"><h2><small>お品書き</small>La carta</h2><p>Arroz de grano corto, vinagre de la casa y wasabi rallado al momento.</p></div>
+      <div class="cols">
+        <div class="dish"><div class="r"><h3>Omakase Kaze</h3><i></i><b>$ 68.000</b></div><p>14 pasos a elección del chef <span class="chef">Recomendado</span></p></div>
+        <div class="dish"><div class="r"><h3>Nigiri de toro</h3><i></i><b>$ 9.800</b></div><p>Ventresca de atún, soja nikiri</p></div>
+        <div class="dish"><div class="r"><h3>Sashimi moriawase</h3><i></i><b>$ 24.500</b></div><p>Selección de 15 cortes del día</p></div>
+        <div class="dish"><div class="r"><h3>Temaki de salmón</h3><i></i><b>$ 7.200</b></div><p>Salmón flameado, palta y sésamo</p></div>
+        <div class="dish"><div class="r"><h3>Gyoza de langostinos</h3><i></i><b>$ 8.900</b></div><p>Seis unidades, salsa ponzu</p></div>
+        <div class="dish"><div class="r"><h3>Mochi de matcha</h3><i></i><b>$ 5.400</b></div><p>Relleno de crema de sésamo negro</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="res wrap"><h2>Doce lugares. Una noche.</h2><p>Martes a domingo · dos turnos: 20:00 y 22:15</p><a class="btn red" href="#">Reservar ahora</a></section>
+  <footer><div class="wrap"><span>© Kaze Sushi Bar · Honduras 5300, Palermo Soho</span><span>@kaze.sushibar</span></div></footer>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brasa — Tostadero de café</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --cream: #f4ece1; --paper: #fbf7f1; --espresso: #2b1d14; --terra: #c8553d; --muted: #7a6758; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Inter, sans-serif; background: var(--cream); color: var(--espresso); }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 30px 0; }
+  .logo { font-family: Fraunces, serif; font-weight: 800; font-size: 30px; letter-spacing: -.02em; }
+  .logo span { color: var(--terra); }
+  .links { display: flex; gap: 38px; font-weight: 500; font-size: 15px; }
+  .btn { display: inline-block; padding: 15px 28px; border-radius: 999px; background: var(--espresso); color: var(--cream); font-weight: 600; font-size: 15px; }
+  .btn.ghost { background: transparent; color: var(--espresso); border: 1.5px solid var(--espresso); }
+  .burger { display: none; width: 28px; height: 18px; border-top: 2px solid; border-bottom: 2px solid; position: relative; }
+  .burger::after { content: ""; position: absolute; left: 0; right: 0; top: 6px; border-top: 2px solid; }
+
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; padding: 50px 0 90px; }
+  .eyebrow { font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--terra); font-weight: 600; }
+  h1 { font-family: Fraunces, serif; font-weight: 600; font-size: 84px; line-height: .98; letter-spacing: -.035em; margin: 22px 0 26px; }
+  h1 em { font-style: italic; color: var(--terra); font-weight: 400; padding-right: .12em; }
+  .lead { font-size: 19px; line-height: 1.6; color: var(--muted); max-width: 500px; }
+  .ctas { display: flex; gap: 14px; margin-top: 38px; }
+  .meta { display: flex; gap: 46px; margin-top: 56px; }
+  .meta b { font-family: Fraunces, serif; font-size: 36px; display: block; }
+  .meta small { color: var(--muted); font-size: 14px; }
+  .art { position: relative; aspect-ratio: 1; }
+  .art .disc { position: absolute; inset: 0; border-radius: 50%; background: var(--terra); }
+  .art svg { position: absolute; inset: 12%; width: 76%; height: 76%; }
+  .badge { position: absolute; left: -24px; bottom: 40px; background: var(--paper); padding: 18px 22px; border-radius: 18px; box-shadow: 0 20px 40px rgba(43,29,20,.15); font-size: 14px; }
+  .badge b { display: block; font-family: Fraunces, serif; font-size: 20px; }
+
+  .origins { background: var(--espresso); color: var(--cream); padding: 100px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 50px; gap: 30px; }
+  h2 { font-family: Fraunces, serif; font-weight: 600; font-size: 54px; letter-spacing: -.03em; line-height: 1; }
+  .head p { max-width: 380px; color: #c9b8a8; line-height: 1.6; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .card { background: #3a281c; border-radius: 26px; padding: 30px; }
+  .bag { height: 220px; border-radius: 18px; margin-bottom: 26px; position: relative; overflow: hidden; }
+  .bag::after { content: ""; position: absolute; left: 50%; top: 30px; width: 120px; height: 160px; margin-left: -60px; border-radius: 14px 14px 8px 8px; background: var(--paper); box-shadow: 0 16px 30px rgba(0,0,0,.25); }
+  .bag::before { content: attr(data-l); position: absolute; z-index: 1; left: 50%; top: 96px; transform: translateX(-50%); font-family: Fraunces, serif; font-weight: 800; font-size: 22px; color: var(--espresso); }
+  .card h3 { font-family: Fraunces, serif; font-size: 28px; font-weight: 600; }
+  .notes { color: #c9b8a8; margin: 8px 0 22px; font-size: 15px; }
+  .row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #55402f; padding-top: 18px; font-weight: 600; }
+  .row span { font-size: 13px; color: #c9b8a8; font-weight: 500; }
+
+  .menu { padding-block: 100px; }
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 80px; margin-top: 46px; }
+  .item { display: flex; align-items: baseline; gap: 12px; padding: 18px 0; border-bottom: 1px dashed #cdbba8; font-size: 18px; }
+  .item i { flex: 1; }
+  .item b { font-family: Fraunces, serif; }
+  footer { border-top: 1px solid #ddcdbb; padding: 34px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; }
+
+  @media (max-width: 760px) {
+    .wrap { padding: 0 22px; }
+    nav { padding: 20px 0; }
+    .links, nav .btn { display: none; }
+    .burger { display: block; }
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 20px 0 70px; }
+    h1 { font-size: 50px; }
+    .lead { font-size: 17px; }
+    .ctas .btn { padding: 14px 22px; }
+    .meta { gap: 26px; margin-top: 40px; }
+    .meta b { font-size: 28px; }
+    .art { width: 86%; margin: 0 auto; }
+    .badge { left: -14px; bottom: 10px; }
+    .origins, .menu { padding-block: 70px; }
+    .head { flex-direction: column; align-items: start; }
+    h2 { font-size: 40px; }
+    .grid, .menu-grid { grid-template-columns: 1fr; }
+    footer .wrap { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+  <header class="wrap">
+    <nav>
+      <a class="logo" href="#">Brasa<span>.</span></a>
+      <div class="links"><a href="#">Cafés</a><a href="#">Barra</a><a href="#">Suscripción</a><a href="#">Nosotros</a></div>
+      <a class="btn" href="#">Comprar café</a>
+      <span class="burger"></span>
+    </nav>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Tostadero de especialidad · Palermo</p>
+        <h1>Café de origen, <em>tostado</em> cada semana.</h1>
+        <p class="lead">Seleccionamos granos de pequeños productores y los tostamos en lotes chicos para que llegue a tu taza en su mejor momento.</p>
+        <div class="ctas"><a class="btn" href="#">Ver cafés</a><a class="btn ghost" href="#">Visitar la barra</a></div>
+        <div class="meta">
+          <div><b>12</b><small>orígenes</small></div>
+          <div><b>48 h</b><small>del tueste a tu casa</small></div>
+          <div><b>4,9★</b><small>en Google</small></div>
+        </div>
+      </div>
+      <div class="art">
+        <div class="disc"></div>
+        <svg viewBox="0 0 200 200" fill="none">
+          <path d="M78 42c-6 10 6 16 0 26M100 36c-7 12 7 18 0 30M122 42c-6 10 6 16 0 26" stroke="#fbf7f1" stroke-width="4" stroke-linecap="round" opacity=".85"/>
+          <ellipse cx="100" cy="164" rx="70" ry="10" fill="#2b1d14" opacity=".25"/>
+          <path d="M44 84h112v34c0 30-25 46-56 46s-56-16-56-46V84Z" fill="#fbf7f1"/>
+          <path d="M156 94h8c11 0 18 7 18 17s-8 18-20 18h-10" stroke="#fbf7f1" stroke-width="9"/>
+          <ellipse cx="100" cy="84" rx="56" ry="9" fill="#2b1d14"/>
+          <path d="M60 118c10 10 70 10 80 0" stroke="#c8553d" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="badge"><b>Etiopía Guji</b>Lote del mes · notas a durazno</div>
+      </div>
+    </section>
+  </header>
+
+  <section class="origins">
+    <div class="wrap">
+      <div class="head"><h2>Orígenes de esta semana</h2><p>Tres cafés, tres perfiles. Molidos a pedido para espresso, filtro o prensa francesa.</p></div>
+      <div class="grid">
+        <article class="card"><div class="bag" data-l="ETH" style="background:#e0a458"></div><h3>Etiopía Guji</h3><p class="notes">Durazno · jazmín · miel</p><div class="row">$ 14.500 <span>250 g</span></div></article>
+        <article class="card"><div class="bag" data-l="COL" style="background:#8fb996"></div><h3>Colombia Huila</h3><p class="notes">Caramelo · manzana roja · cacao</p><div class="row">$ 13.200 <span>250 g</span></div></article>
+        <article class="card"><div class="bag" data-l="BRA" style="background:#c8553d"></div><h3>Brasil Cerrado</h3><p class="notes">Chocolate · avellana · cuerpo alto</p><div class="row">$ 11.900 <span>250 g</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu wrap">
+    <h2>En la barra</h2>
+    <div class="menu-grid">
+      <div class="item">Espresso<i></i><b>$ 2.800</b></div>
+      <div class="item">Flat white<i></i><b>$ 3.900</b></div>
+      <div class="item">Filtrado V60<i></i><b>$ 4.200</b></div>
+      <div class="item">Cold brew<i></i><b>$ 4.500</b></div>
+      <div class="item">Cortado<i></i><b>$ 3.100</b></div>
+      <div class="item">Medialuna de manteca<i></i><b>$ 1.600</b></div>
+    </div>
+  </section>
+
+  <footer><div class="wrap"><span>© Brasa Tostadores · Gorriti 4820, Palermo</span><span>Lun a Sáb · 8 a 19 h</span></div></footer>
+</body>
+</html>

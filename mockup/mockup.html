@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  /* Lienzo de 1080x1350 (4:5). generate.mjs lo captura con deviceScaleFactor 4/3 => 1440x1800 */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; }
+  body {
+    font-family: Inter, system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(900px 700px at 85% 10%, color-mix(in srgb, var(--accent) 35%, transparent), transparent 70%),
+      radial-gradient(800px 600px at 0% 100%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+      var(--bg);
+    position: relative;
+  }
+  .slide { position: absolute; inset: 0; padding: 72px 80px; display: none; flex-direction: column; }
+  .slide.on { display: flex; }
+
+  .top { display: flex; justify-content: space-between; align-items: center; font-size: 22px; font-weight: 500; }
+  .pill { padding: 10px 20px; border-radius: 999px; border: 2px solid currentColor; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 18px; }
+  .muted { opacity: .7; }
+  /* --display: tipografía principal del diseño, para que cada publicación tenga su propia voz */
+  h1, h2, .foot [data-name] { font-family: var(--display, Inter), Inter, sans-serif; font-weight: var(--dw, 800); }
+  h1 { font-size: 96px; line-height: .95; letter-spacing: -0.02em; margin-top: 44px; }
+  .tag { font-size: 30px; margin-top: 16px; opacity: .75; }
+  h2 { font-size: 58px; letter-spacing: -0.01em; line-height: 1; }
+  .foot [data-name] { font-size: 30px; }
+
+  /* Variante B del slide 1: dispositivos arriba, título abajo, celular a la izquierda */
+  #s1.alt .devices { order: 1; margin: 60px 0 0; }
+  #s1.alt h1 { order: 2; margin-top: auto; }
+  #s1.alt .tag { order: 3; }
+  #s1.alt .foot { order: 4; margin-top: 44px; }
+  #s1.alt .phone { right: auto; left: -10px; }
+  #s1.alt .laptop { margin-right: 0; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; font-size: 24px; font-weight: 500; }
+  .foot b { font-weight: 800; }
+
+  /* Pantallas: un iframe al tamaño real del dispositivo, escalado con transform */
+  .screen { position: relative; overflow: hidden; background: #fff; }
+  .screen iframe { position: absolute; left: 0; border: 0; transform-origin: 0 0; background: #fff; }
+
+  /* Notebook */
+  .laptop { position: relative; width: 900px; margin: 0 auto; }
+  .laptop .lid { background: #16171a; border-radius: 26px 26px 0 0; padding: 20px 20px 26px; box-shadow: 0 40px 80px rgba(0,0,0,.35); }
+  .laptop .lid .screen { width: 860px; height: 537.5px; border-radius: 6px; }
+  .laptop .base { width: 1000px; height: 26px; margin-left: -50px; background: linear-gradient(#d9dadd, #9a9ca1); border-radius: 0 0 26px 26px; position: relative; }
+  .laptop .base::before { content: ""; position: absolute; left: 50%; top: 0; width: 160px; height: 10px; margin-left: -80px; background: #8a8c91; border-radius: 0 0 10px 10px; }
+
+  /* Celular */
+  .phone { position: relative; background: #111214; padding: 12px; border-radius: 52px; box-shadow: 0 40px 80px rgba(0,0,0,.4), inset 0 0 0 2px #2c2d31; }
+  .phone .screen { border-radius: 40px; }
+  .phone .island { position: absolute; top: 24px; left: 50%; width: 30%; height: 26px; transform: translateX(-50%); background: #000; border-radius: 20px; z-index: 2; }
+
+  /* Navegador */
+  .browser { width: 800px; margin: 0 auto; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 90px rgba(0,0,0,.35); background: #fff; }
+  .chrome { height: 46px; background: #ececef; display: flex; align-items: center; gap: 9px; padding: 0 18px; }
+  .chrome i { width: 13px; height: 13px; border-radius: 50%; display: block; }
+  .chrome .url { flex: 1; margin-left: 18px; height: 28px; border-radius: 8px; background: #fff; color: #555; font-size: 15px; display: flex; align-items: center; padding: 0 14px; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: notebook + celular -->
+<section class="slide" id="s1">
+  <div class="top"><span class="muted" data-handle style="margin-left:auto"></span></div>
+  <h1 data-name></h1>
+  <p class="tag" data-tag></p>
+  <div class="devices" style="position:relative; margin: auto 0;">
+    <div class="laptop">
+      <div class="lid"><div class="screen" data-frame="desktop" data-w="860" data-offset="0"></div></div>
+      <div class="base"></div>
+    </div>
+    <div class="phone" style="position:absolute; right:-10px; top:170px; width:250px;">
+      <div class="island" style="top:20px;height:18px"></div>
+      <div class="screen" data-frame="mobile" data-w="226" data-offset="0"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Diseño web <b>responsive</b></span><span class="muted">Deslizá →</span></div>
+</section>
+
+<!-- Slide 2: escritorio -->
+<section class="slide" id="s2" style="padding-top:60px; padding-bottom:56px">
+  <div class="top" style="margin-bottom:30px"><h2>Versión escritorio</h2><span class="muted" data-handle></span></div>
+  <div class="browser">
+    <div class="chrome"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="url" data-url></span></div>
+    <div class="screen" data-frame="desktop" data-w="800" data-h="1000" data-offset="0"></div>
+  </div>
+  <div class="foot"><span data-name></span><span class="muted">Deslizá →</span></div>
+</section>
+
+<!-- Slide 3: celular -->
+<section class="slide" id="s3">
+  <div class="top"><h2>Versión celular</h2><span class="muted" data-handle></span></div>
+  <div style="display:flex; gap:56px; justify-content:center; margin-top:56px;">
+    <div class="phone" style="width:384px;"><div class="island"></div><div class="screen" data-frame="mobile" data-w="360" data-offset="0"></div></div>
+    <div class="phone" style="width:384px; margin-top:70px;"><div class="island"></div><div class="screen" data-frame="mobile" data-w="360" data-offset="844"></div></div>
+  </div>
+  <div class="foot"><span>¿Querés una web así? <b>Escribime por DM</b></span></div>
+</section>
+
+<script>
+  const p = new URLSearchParams(location.search);
+  const site = p.get('site') || '01-tostadero-brasa';
+  const name = p.get('name') || 'Proyecto';
+  const root = document.documentElement.style;
+  root.setProperty('--bg', p.get('bg') || '#f4efe8');
+  root.setProperty('--ink', p.get('ink') || '#111');
+  root.setProperty('--accent', p.get('accent') || '#ff5a36');
+
+  const font = p.get('font');
+  if (font) {
+    const fw = p.get('fw') || '700';
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g, '+')}:wght@${fw}&display=swap`;
+    document.head.appendChild(link);
+    root.setProperty('--display', `"${font}"`);
+    root.setProperty('--dw', fw);
+  }
+  if (p.get('layout') === 'b') document.getElementById('s1').classList.add('alt');
+
+  const fill = (attr, text) => document.querySelectorAll(`[data-${attr}]`).forEach(el => el.textContent = text);
+  fill('name', name);
+  fill('tag', p.get('tag') || '');
+  fill('num', 'Proyecto #' + (p.get('n') || '01'));
+  fill('handle', p.get('handle') || '');
+  fill('url', 'www.' + name.toLowerCase().normalize('NFD').replace(/[^a-z0-9]/g, '') + '.com');
+
+  // Tamaños reales de los dispositivos emulados
+  const DEVICES = { desktop: { w: 1440, h: 900 }, mobile: { w: 390, h: 844 } };
+  document.querySelectorAll('[data-frame]').forEach(box => {
+    const dev = DEVICES[box.dataset.frame];
+    const shownW = +box.dataset.w;
+    const scale = shownW / dev.w;
+    const shownH = box.dataset.h ? +box.dataset.h : dev.h * scale;
+    const offset = +box.dataset.offset;
+    box.style.width = shownW + 'px';
+    box.style.height = shownH + 'px';
+    const f = document.createElement('iframe');
+    f.src = `../sites/${site}/index.html`;
+    f.scrolling = 'no';
+    // El iframe es tan alto como lo que se muestra + el desplazamiento, así no hace falta hacer scroll
+    f.style.width = dev.w + 'px';
+    f.style.height = (shownH / scale + offset) + 'px';
+    f.style.transform = `scale(${scale}) translateY(${-offset}px)`;
+    box.appendChild(f);
+  });
+
+  document.getElementById('s' + (p.get('slide') || '1')).classList.add('on');
+</script>
+</body>
+</html>

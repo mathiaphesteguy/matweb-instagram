@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NODO — Streetwear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #f4f4f2; --ink: #0d0d0d; --red: #ff2d1a; --muted: #6d6d6a; --line: #d9d9d4; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Archivo, sans-serif; background: var(--bg); color: var(--ink); overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  .mono { font-family: "IBM Plex Mono", monospace; }
+  nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 22px 40px; font-size: 14px; font-weight: 500; text-transform: uppercase; }
+  .links { display: flex; gap: 26px; }
+  .logo { font-weight: 900; font-stretch: 125%; font-size: 26px; letter-spacing: -.02em; }
+  .cart { justify-self: end; }
+  .burger { display: none; justify-self: end; width: 24px; height: 12px; border-top: 2px solid; border-bottom: 2px solid; }
+
+  .hero { position: relative; height: 860px; overflow: hidden; }
+  .word { position: absolute; left: 0; right: 0; top: 10px; text-align: center; font-weight: 900; font-stretch: 125%; font-size: 22.5vw; line-height: .78; letter-spacing: -.06em; color: var(--red); }
+  .pic { position: absolute; left: 50%; top: 150px; width: 440px; height: 580px; margin-left: -220px; background: #bbb url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000&q=80&auto=format&fit=crop") center/cover; transform: rotate(-3deg); box-shadow: 0 40px 80px rgba(0,0,0,.25); }
+  .pic span { position: absolute; top: 16px; left: 16px; background: var(--ink); color: #fff; font-size: 12px; padding: 6px 10px; }
+  .l, .r { position: absolute; bottom: 70px; font-size: 13px; text-transform: uppercase; line-height: 1.7; }
+  .l { left: 40px; max-width: 300px; }
+  .r { right: 40px; text-align: right; }
+  .l b, .r b { display: block; font-weight: 900; font-stretch: 112%; font-size: 34px; text-transform: uppercase; line-height: 1; margin-bottom: 14px; font-family: Archivo, sans-serif; }
+  .btn { display: inline-block; margin-top: 18px; background: var(--ink); color: #fff; border-radius: 999px; padding: 14px 24px; font-family: Archivo, sans-serif; font-weight: 700; }
+  .count { font-size: 30px; font-weight: 500; letter-spacing: .02em; }
+
+  .marq { background: var(--ink); color: var(--bg); white-space: nowrap; overflow: hidden; font-weight: 900; font-stretch: 125%; font-size: 40px; text-transform: uppercase; padding: 16px 0; letter-spacing: -.02em; }
+  .marq span { margin: 0 22px; }
+  .marq i { color: var(--red); font-style: normal; }
+  .shop { padding: 80px 40px 90px; max-width: 1440px; margin: 0 auto; }
+  .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 30px; }
+  h2 { font-weight: 900; font-stretch: 125%; font-size: 72px; text-transform: uppercase; letter-spacing: -.04em; line-height: .9; }
+  .head a { font-size: 14px; text-transform: uppercase; border-bottom: 2px solid; padding-bottom: 3px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .item .img { position: relative; height: 440px; background: #ccc center/cover; }
+  .item .img span { position: absolute; top: 12px; left: 12px; background: var(--red); color: #fff; font-size: 11px; padding: 5px 9px; text-transform: uppercase; }
+  .item .img span.out { background: var(--ink); }
+  .item .row { display: flex; justify-content: space-between; padding: 12px 0; font-size: 14px; text-transform: uppercase; border-bottom: 1px solid var(--line); }
+  .item .row b { font-weight: 700; }
+  footer { padding: 26px 40px; display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); text-transform: uppercase; border-top: 1px solid var(--line); }
+
+  @media (max-width: 760px) {
+    nav { grid-template-columns: 1fr auto; padding: 18px 20px; }
+    .links, .cart { display: none; }
+    .burger { display: block; }
+    .logo { grid-column: 1; justify-self: start; }
+    .hero { height: 720px; }
+    .word { top: 40px; font-size: 22.5vw; }
+    .pic { width: 250px; height: 330px; margin-left: -125px; top: 130px; }
+    .l { left: 20px; right: 20px; bottom: 40px; max-width: none; }
+    .l b { font-size: 28px; }
+    .r { right: 20px; bottom: auto; top: 480px; text-align: left; left: 20px; display: none; }
+    .marq { font-size: 26px; }
+    .shop { padding: 56px 20px 60px; }
+    .head { flex-direction: column; align-items: start; gap: 12px; }
+    h2 { font-size: 44px; }
+    .grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .item .img { height: 230px; }
+    .item .row { flex-direction: column; font-size: 12px; gap: 4px; }
+    footer { padding: 22px 20px; flex-direction: column; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="links"><a href="#">Drop 07</a><a href="#">Remeras</a><a href="#">Buzos</a><a href="#">Accesorios</a></div>
+    <a class="logo" href="#">NODO</a>
+    <a class="cart mono" href="#">Carrito (0)</a>
+    <span class="burger"></span>
+  </nav>
+  <header class="hero">
+    <div class="word">NODO</div>
+    <div class="pic"><span class="mono">DROP 07 — INVIERNO 26</span></div>
+    <div class="l mono"><b>Ropa para la ciudad que no duerme.</b>Diseñada en Buenos Aires. Producción local en tiradas cortas de 200 unidades.<br><a class="btn" href="#">Comprar el drop →</a></div>
+    <div class="r mono"><b>Próximo drop</b><span class="count">02 : 14 : 37</span><br>Envíos gratis desde $ 90.000</div>
+  </header>
+  <div class="marq"><span>Nuevo drop</span><i>✱</i><span>Edición limitada</span><i>✱</i><span>Hecho en BA</span><i>✱</i><span>Nuevo drop</span><i>✱</i><span>Edición limitada</span></div>
+
+  <section class="shop">
+    <div class="head"><h2>Drop 07</h2><a class="mono" href="#">Ver los 24 productos</a></div>
+    <div class="grid">
+      <article class="item"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1721637635502-b0abaaa75edb?w=800&q=80&auto=format&fit=crop')"><span class="mono">Nuevo</span></div><div class="row mono"><b>Buzo Asfalto</b><span>$ 68.000</span></div></article>
+      <article class="item"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1722625957003-4f1f1f6942e3?w=800&q=80&auto=format&fit=crop')"></div><div class="row mono"><b>Campera Subte</b><span>$ 124.000</span></div></article>
+      <article class="item"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1532332248682-206cc786359f?w=800&q=80&auto=format&fit=crop')"><span class="mono out">Agotado</span></div><div class="row mono"><b>Remera Nodo</b><span>$ 32.000</span></div></article>
+      <article class="item"><div class="img" style="background-image:url('https://images.unsplash.com/photo-1624353656309-8be1a6c457be?w=800&q=80&auto=format&fit=crop')"></div><div class="row mono"><b>Pantalón Cargo</b><span>$ 79.000</span></div></article>
+    </div>
+  </section>
+  <footer class="mono"><span>© NODO Clothing</span><span>@nodo.clothing</span></footer>
+</body>
+</html>
